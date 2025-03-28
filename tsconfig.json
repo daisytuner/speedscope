@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "module": "esnext",
+    "outDir": "dist",
+    "module": "ESNext",
+    "target": "ES2019",
+    "declaration": true,
+    "declarationMap": true,
     "moduleResolution": "Node",
     "esModuleInterop": true,
-    "strict": true,
-    "jsx": "react",
-    "noUnusedLocals": true,
-    "jsxFactory": "h",
-    "target": "es2015"
-  }
+    "strict": true
+  },
+  "include": ["src/**/*"]
 }
