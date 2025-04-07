@@ -12,6 +12,7 @@ interface PerfStackFrame {
   address: string
   symbolName: string
   file: string
+  line?: number
 }
 
 interface PerfEvent {
@@ -77,17 +78,37 @@ function parseEvent(rawEvent: string[]): PerfEvent | null {
     event.eventType = evName[1]
   }
 
+  var lastWasSymbol: PerfStackFrame | null = null
+
   for (let line of lines) {
-    const lineMatch = /^\s*(\w+)\s*(.+) \((\S*)\)/.exec(line)
+    if (lastWasSymbol) {
+      const lineMatch = /^[ ]+([0-9a-zA-Z\[\].\/\-_]+)(:([0-9]+))?( \(inlined\))?$/.exec(line)
+      if (lineMatch) {
+        let [, sourceFile, ,sourceLine, wasInlined] = lineMatch
+
+        lastWasSymbol.file = sourceFile
+        lastWasSymbol.line = sourceLine ? parseInt(sourceLine) : undefined
+
+        lastWasSymbol = null
+        continue
+      } else {
+        lastWasSymbol = null
+      }
+    }
+    const lineMatch = /^\s*([0-9a-fA-F]+) (.+?)( \((\S*)\))?$/.exec(line)
+
     if (!lineMatch) continue
-    let [, address, symbolName, file] = lineMatch
+    let [, address, symbolName, , file] = lineMatch
 
     // Linux 4.8 included symbol offsets in perf script output by default, eg:
     // 7fffb84c9afc cpu_startup_entry+0x800047c022ec ([kernel.kallsyms])
     // strip these off:
     symbolName = symbolName.replace(/\+0x[\da-f]+$/, '')
 
-    event.stack.push({address: `0x${address}`, symbolName, file})
+    const frame: PerfStackFrame = {address: `0x${address}`, symbolName, file}
+
+    lastWasSymbol = frame
+    event.stack.push(frame)
   }
   event.stack.reverse()
 
@@ -120,11 +141,12 @@ export function importFromLinuxPerf(contents: TextFileContent): ProfileGroup | n
     const builder = builderState
 
     builder.appendSampleWithTimestamp(
-      event.stack.map(({symbolName, file}) => {
+      event.stack.map(({symbolName, file, line}) => {
         return {
           key: `${symbolName} (${file})`,
           name: symbolName === '[unknown]' ? `??? (${file})` : symbolName,
           file: file,
+          line: line
         }
       }),
       event.time!,

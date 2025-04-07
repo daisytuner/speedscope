@@ -25,4 +25,7 @@ describe('importFromLinuxPerf', () => {
       await checkProfileSnapshot('./sample/profiles/linux-perf/system-wide.linux-perf.txt')
     })
   })
+  test('line-info.linux-perf.txt', async () => {
+    await checkProfileSnapshot('./sample/profiles/linux-perf/line-info.linux-perf.txt')
+  })
 })

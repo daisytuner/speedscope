@@ -1,0 +1,35 @@
+matmul.out 399561 847993.508383:         21 cycles:u: 
+	    ffff8cecce14 putchar+0x94 (/usr/lib/aarch64-linux-gnu/libc.so.6)
+  libc.so.6[6ce14]
+	    aaaac8e10a13 printf+0x17f
+  /usr/include/aarch64-linux-gnu/bits/stdio2.h:112 (inlined)
+	    aaaac8e10a13 main+0x17f (/home/daisy/cli-tests/c/matmul.out)
+  /usr/include/aarch64-linux-gnu/bits/stdio2.h:112
+	    ffff8ce873fb __libc_start_call_main+0x6b (/usr/lib/aarch64-linux-gnu/libc.so.6)
+  libc-start.c:0
+
+matmul.out 399561 847993.508391:         36 cycles:u: 
+	    ffff8cf8fdfc __aarch64_swp4_rel+0xc (/usr/lib/aarch64-linux-gnu/libc.so.6)
+  libc.so.6[12fdfc]
+	    ffff8cecce7b putchar+0xfb (/usr/lib/aarch64-linux-gnu/libc.so.6)
+  libc.so.6[6ce7b]
+	    aaaac8e10a13 printf+0x17f
+  /usr/include/aarch64-linux-gnu/bits/stdio2.h:112 (inlined)
+	    aaaac8e10a13 main+0x17f (/home/daisy/cli-tests/c/matmul.out)
+  /usr/include/aarch64-linux-gnu/bits/stdio2.h:112
+	    ffff8ce873fb __libc_start_call_main+0x6b (/usr/lib/aarch64-linux-gnu/libc.so.6)
+  libc-start.c:0
+
+matmul.out 399561 847993.508399:         72 cycles:u: 
+	    aaaac8e10a14 main+0x180 (/home/daisy/cli-tests/c/matmul.out)
+  /home/daisy/cli-tests/c/matmul.c:39
+	    ffff8ce873fb __libc_start_call_main+0x6b (/usr/lib/aarch64-linux-gnu/libc.so.6)
+  libc-start.c:0
+
+matmul.out 399561 847993.508405:        152 cycles:u: 
+	    aaaac8e109f4 printf+0x160
+  /usr/include/aarch64-linux-gnu/bits/stdio2.h:112 (inlined)
+	    aaaac8e109f4 main+0x160 (/home/daisy/cli-tests/c/matmul.out)
+  /usr/include/aarch64-linux-gnu/bits/stdio2.h:112
+	    ffff8ce873fb __libc_start_call_main+0x6b (/usr/lib/aarch64-linux-gnu/libc.so.6)
+  libc-start.c:0

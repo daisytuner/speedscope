@@ -571,6 +571,87 @@ exports[`importFromLinuxPerf forks.linux-perf.txt: indexToView 1`] = `0`;
 
 exports[`importFromLinuxPerf forks.linux-perf.txt: profileGroup.name 1`] = `"forks.linux-perf.txt"`;
 
+exports[`importFromLinuxPerf line-info.linux-perf.txt 1`] = `
+Object {
+  "frames": Array [
+    Frame {
+      "col": undefined,
+      "file": "libc-start.c",
+      "key": "__libc_start_call_main (libc-start.c)",
+      "line": 0,
+      "name": "__libc_start_call_main",
+      "selfWeight": 0,
+      "totalWeight": 0.000021999934688210487,
+    },
+    Frame {
+      "col": undefined,
+      "file": "/usr/include/aarch64-linux-gnu/bits/stdio2.h",
+      "key": "main (/usr/include/aarch64-linux-gnu/bits/stdio2.h)",
+      "line": 112,
+      "name": "main",
+      "selfWeight": 0,
+      "totalWeight": 0.000014999997802078724,
+    },
+    Frame {
+      "col": undefined,
+      "file": "/usr/include/aarch64-linux-gnu/bits/stdio2.h",
+      "key": "printf (/usr/include/aarch64-linux-gnu/bits/stdio2.h)",
+      "line": 112,
+      "name": "printf",
+      "selfWeight": 0.00000300002284348011,
+      "totalWeight": 0.000014999997802078724,
+    },
+    Frame {
+      "col": undefined,
+      "file": "libc.so.6[6ce14]",
+      "key": "putchar (libc.so.6[6ce14])",
+      "line": undefined,
+      "name": "putchar",
+      "selfWeight": 0.00000400003045797348,
+      "totalWeight": 0.00000400003045797348,
+    },
+    Frame {
+      "col": undefined,
+      "file": "libc.so.6[6ce7b]",
+      "key": "putchar (libc.so.6[6ce7b])",
+      "line": undefined,
+      "name": "putchar",
+      "selfWeight": 0,
+      "totalWeight": 0.000007999944500625134,
+    },
+    Frame {
+      "col": undefined,
+      "file": "libc.so.6[12fdfc]",
+      "key": "__aarch64_swp4_rel (libc.so.6[12fdfc])",
+      "line": undefined,
+      "name": "__aarch64_swp4_rel",
+      "selfWeight": 0.000007999944500625134,
+      "totalWeight": 0.000007999944500625134,
+    },
+    Frame {
+      "col": undefined,
+      "file": "/home/daisy/cli-tests/c/matmul.c",
+      "key": "main (/home/daisy/cli-tests/c/matmul.c)",
+      "line": 39,
+      "name": "main",
+      "selfWeight": 0.0000069999368861317635,
+      "totalWeight": 0.0000069999368861317635,
+    },
+  ],
+  "name": "matmul.out tid: 399561",
+  "stacks": Array [
+    "__libc_start_call_main;main;printf;putchar 4.00µs",
+    "__libc_start_call_main;main;printf;putchar;__aarch64_swp4_rel 8.00µs",
+    "__libc_start_call_main;main 7.00µs",
+    "__libc_start_call_main;main;printf 3.00µs",
+  ],
+}
+`;
+
+exports[`importFromLinuxPerf line-info.linux-perf.txt: indexToView 1`] = `0`;
+
+exports[`importFromLinuxPerf line-info.linux-perf.txt: profileGroup.name 1`] = `"matmul.out tid: 399561"`;
+
 exports[`importFromLinuxPerf one-sample.linux-perf.txt 1`] = `
 Object {
   "frames": Array [
